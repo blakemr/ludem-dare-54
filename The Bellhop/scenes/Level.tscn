@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://kylxrrx72f24"]
+
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_1rdgn"]
+[ext_resource type="Script" path="res://classes/elevator.gd" id="1_y0s0c"]
+[ext_resource type="Script" path="res://classes/passenger_generator.gd" id="2_wg7x3"]
+[ext_resource type="Texture2D" uid="uid://kjkwyic8k8c2" path="res://icon.svg" id="3_qy5ry"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_1rdgn")
+
+[node name="Elevator" type="Node2D" parent="."]
+script = ExtResource("1_y0s0c")
+
+[node name="Sprite2D" type="Sprite2D" parent="Elevator"]
+texture = ExtResource("3_qy5ry")
+
+[node name="PassengerGenerator" type="Timer" parent="."]
+script = ExtResource("2_wg7x3")
