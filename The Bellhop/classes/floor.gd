@@ -2,6 +2,8 @@
 class_name Floor
 extends Node2D
 
+signal call_elevator
+
 @export var size = Vector2(50, 50)
 @export var call_position = Vector2.ZERO
 @export var floor_indicator: Node
@@ -29,5 +31,7 @@ func _ready() -> void:
 		if child is CollisionObject2D:
 			child.input_event.connect(input_event)
 
-func input_event(viewport: Node, event: InputEvent, shape_idx: int):
-	pass
+func input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			call_elevator.emit(call_position)

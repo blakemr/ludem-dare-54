@@ -8,6 +8,7 @@ size = Vector2(100, 125)
 [node name="Floor" type="Node2D" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference")]
 script = ExtResource("1_bef5v")
 size = Vector2(375, 125)
+call_position = Vector2(425, 62)
 floor_indicator = NodePath("ColorRect")
 size_reference = NodePath("ReferenceRect")
 call_reference = NodePath("ElevatorCallPosition")
