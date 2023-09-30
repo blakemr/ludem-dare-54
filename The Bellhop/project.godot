@@ -14,3 +14,7 @@ config/name="The Bellhop"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://singletons/Globals.tscn"

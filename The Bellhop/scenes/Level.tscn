@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://kylxrrx72f24"]
+[gd_scene load_steps=6 format=3 uid="uid://kylxrrx72f24"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_1rdgn"]
 [ext_resource type="Script" path="res://classes/elevator.gd" id="1_y0s0c"]
 [ext_resource type="Script" path="res://classes/passenger_generator.gd" id="2_wg7x3"]
 [ext_resource type="Texture2D" uid="uid://kjkwyic8k8c2" path="res://icon.svg" id="3_qy5ry"]
+[ext_resource type="PackedScene" uid="uid://bgnm3mh4jpy7" path="res://scenes/Floor.tscn" id="5_02g3n"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_1rdgn")
@@ -16,3 +17,53 @@ texture = ExtResource("3_qy5ry")
 
 [node name="PassengerGenerator" type="Timer" parent="."]
 script = ExtResource("2_wg7x3")
+
+[node name="Floors" type="Node" parent="."]
+
+[node name="Floor1" parent="Floors" instance=ExtResource("5_02g3n")]
+position = Vector2(600, 64)
+
+[node name="Floor2" parent="Floors" instance=ExtResource("5_02g3n")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(600, 114)
+floor_number = 1
+
+[node name="Floor3" parent="Floors" instance=ExtResource("5_02g3n")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(600, 164)
+floor_number = 2
+
+[node name="Floor4" parent="Floors" instance=ExtResource("5_02g3n")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(600, 214)
+floor_number = 3
+
+[node name="Floor5" parent="Floors" instance=ExtResource("5_02g3n")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(600, 264)
+floor_number = 4
+
+[node name="Floor6" parent="Floors" instance=ExtResource("5_02g3n")]
+modulate = Color(0.627451, 0.12549, 0.941176, 1)
+position = Vector2(600, 314)
+floor_number = 5
+
+[node name="Floor7" parent="Floors" instance=ExtResource("5_02g3n")]
+modulate = Color(1, 0.647059, 0, 1)
+position = Vector2(600, 364)
+floor_number = 6
+
+[node name="Floor8" parent="Floors" instance=ExtResource("5_02g3n")]
+modulate = Color(0.25098, 0.878431, 0.815686, 1)
+position = Vector2(600, 414)
+floor_number = 7
+
+[node name="Floor9" parent="Floors" instance=ExtResource("5_02g3n")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(600, 464)
+floor_number = 8
+
+[node name="Floor10" parent="Floors" instance=ExtResource("5_02g3n")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(600, 514)
+floor_number = 9
