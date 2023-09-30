@@ -10,9 +10,11 @@
 script = ExtResource("1_1rdgn")
 
 [node name="Elevator" type="Node2D" parent="."]
+position = Vector2(275, 50)
 script = ExtResource("1_y0s0c")
 
 [node name="Sprite2D" type="Sprite2D" parent="Elevator"]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_qy5ry")
 
 [node name="PassengerGenerator" type="Timer" parent="."]
@@ -21,49 +23,49 @@ script = ExtResource("2_wg7x3")
 [node name="Floors" type="Node" parent="."]
 
 [node name="Floor1" parent="Floors" instance=ExtResource("5_02g3n")]
-position = Vector2(600, 64)
+position = Vector2(175, 25)
 
 [node name="Floor2" parent="Floors" instance=ExtResource("5_02g3n")]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(600, 114)
+position = Vector2(175, 75)
 floor_number = 1
 
 [node name="Floor3" parent="Floors" instance=ExtResource("5_02g3n")]
 modulate = Color(0, 0, 1, 1)
-position = Vector2(600, 164)
+position = Vector2(175, 125)
 floor_number = 2
 
 [node name="Floor4" parent="Floors" instance=ExtResource("5_02g3n")]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(600, 214)
+position = Vector2(175, 175)
 floor_number = 3
 
 [node name="Floor5" parent="Floors" instance=ExtResource("5_02g3n")]
 modulate = Color(1, 1, 0, 1)
-position = Vector2(600, 264)
+position = Vector2(175, 225)
 floor_number = 4
 
 [node name="Floor6" parent="Floors" instance=ExtResource("5_02g3n")]
 modulate = Color(0.627451, 0.12549, 0.941176, 1)
-position = Vector2(600, 314)
+position = Vector2(175, 275)
 floor_number = 5
 
 [node name="Floor7" parent="Floors" instance=ExtResource("5_02g3n")]
 modulate = Color(1, 0.647059, 0, 1)
-position = Vector2(600, 364)
+position = Vector2(175, 325)
 floor_number = 6
 
 [node name="Floor8" parent="Floors" instance=ExtResource("5_02g3n")]
 modulate = Color(0.25098, 0.878431, 0.815686, 1)
-position = Vector2(600, 414)
+position = Vector2(175, 375)
 floor_number = 7
 
 [node name="Floor9" parent="Floors" instance=ExtResource("5_02g3n")]
 modulate = Color(1, 0, 1, 1)
-position = Vector2(600, 464)
+position = Vector2(175, 425)
 floor_number = 8
 
 [node name="Floor10" parent="Floors" instance=ExtResource("5_02g3n")]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(600, 514)
+position = Vector2(175, 475)
 floor_number = 9

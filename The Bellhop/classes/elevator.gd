@@ -28,7 +28,7 @@ func move(pos: Vector2) -> void:
 	if moving: return
 
 	var tween = create_tween()
-	tween.tween_property(self, "position", pos, animation_speed).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(self, "position", Vector2(position.x, snappedf(pos.y, 50.0)), animation_speed).set_trans(Tween.TRANS_BACK)
 	moving = true
 	await tween.finished
 	moving = false

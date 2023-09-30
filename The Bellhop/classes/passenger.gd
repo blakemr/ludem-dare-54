@@ -20,4 +20,4 @@ func _ready() -> void:
 
 	var tween = create_tween()
 	scale = Vector2.ZERO
-	tween.tween_property(self, "scale", Vector2.ONE, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "scale", Vector2.ONE * 0.1, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
