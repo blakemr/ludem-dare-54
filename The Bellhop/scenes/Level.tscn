@@ -1,67 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://kylxrrx72f24"]
+[gd_scene load_steps=6 format=3 uid="uid://1tfy3664hdca"]
 
-[ext_resource type="Script" path="res://scenes/level.gd" id="1_1rdgn"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_m78fd"]
+[ext_resource type="Script" path="res://classes/Elevator.gd" id="2_db4c8"]
 [ext_resource type="Script" path="res://classes/PassengerGenerator.gd" id="3_8gn07"]
 [ext_resource type="Texture2D" uid="uid://kjkwyic8k8c2" path="res://icon.svg" id="3_qy5ry"]
 [ext_resource type="PackedScene" uid="uid://bgnm3mh4jpy7" path="res://scenes/Floor.tscn" id="5_02g3n"]
 
-[sub_resource type="GDScript" id="GDScript_5o088"]
-script/source = "class_name Elevator
-extends Node2D
-
-signal over_capacity
-signal over_weight
-
-@export var max_capacity: int = 5
-@export var max_weight_limit: int = 100
-@export var animation_speed = 1.0
-
-var capacity: int = 0:
-	set(value):
-		if value > max_capacity:
-			over_capacity.emit()
-
-		capacity = value
-
-var weight: int = 0:
-	set(value):
-		if value > max_weight_limit:
-			over_weight.emit()
-
-		weight = value
-
-var moving: bool = false
-
-func move(pos: Vector2) -> void:
-	if moving: return
-
-	var tween = create_tween()
-	tween.tween_property(self, \"position\", Vector2(position.x, snappedf(pos.y, 50.0)), animation_speed).set_trans(Tween.TRANS_BACK)
-	moving = true
-	await tween.finished
-	moving = false
-	
-func add_passenger(pas: Passenger) -> void:
-	add_child(pas)
-
-	capacity += pas.capacity
-	weight += pas.weight
-
-func remove_passenger(pas: Passenger) -> Passenger:
-	remove_child(pas)
-
-	capacity -= pas.capacity
-	weight -= pas.weight
-
-	return pas
-"
-
 [node name="Level" type="Node"]
-script = ExtResource("1_1rdgn")
+script = ExtResource("1_m78fd")
 
 [node name="Elevator" type="Node2D" parent="."]
-position = Vector2(275, 50)
-script = SubResource("GDScript_5o088")
+position = Vector2(425, 50)
+script = ExtResource("2_db4c8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Elevator"]
 scale = Vector2(0.4, 0.4)
@@ -73,49 +23,49 @@ script = ExtResource("3_8gn07")
 [node name="Floors" type="Node" parent="."]
 
 [node name="Floor1" parent="Floors" instance=ExtResource("5_02g3n")]
-position = Vector2(175, 25)
+size = Vector2(375, 125)
 
 [node name="Floor2" parent="Floors" instance=ExtResource("5_02g3n")]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(175, 75)
+position = Vector2(0, 150)
+size = Vector2(375, 125)
 floor_number = 1
 
 [node name="Floor3" parent="Floors" instance=ExtResource("5_02g3n")]
-modulate = Color(0, 0, 1, 1)
-position = Vector2(175, 125)
+position = Vector2(0, 300)
+size = Vector2(375, 125)
 floor_number = 2
 
 [node name="Floor4" parent="Floors" instance=ExtResource("5_02g3n")]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(175, 175)
+position = Vector2(0, 450)
+size = Vector2(375, 125)
 floor_number = 3
 
 [node name="Floor5" parent="Floors" instance=ExtResource("5_02g3n")]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(175, 225)
+position = Vector2(0, 600)
+size = Vector2(375, 125)
 floor_number = 4
 
 [node name="Floor6" parent="Floors" instance=ExtResource("5_02g3n")]
-modulate = Color(0.627451, 0.12549, 0.941176, 1)
-position = Vector2(175, 275)
+position = Vector2(0, 750)
+size = Vector2(375, 125)
 floor_number = 5
 
 [node name="Floor7" parent="Floors" instance=ExtResource("5_02g3n")]
-modulate = Color(1, 0.647059, 0, 1)
-position = Vector2(175, 325)
+position = Vector2(0, 900)
+size = Vector2(375, 125)
 floor_number = 6
 
 [node name="Floor8" parent="Floors" instance=ExtResource("5_02g3n")]
-modulate = Color(0.25098, 0.878431, 0.815686, 1)
-position = Vector2(175, 375)
+position = Vector2(0, 1050)
+size = Vector2(375, 125)
 floor_number = 7
 
 [node name="Floor9" parent="Floors" instance=ExtResource("5_02g3n")]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(175, 425)
+position = Vector2(0, 1200)
+size = Vector2(375, 125)
 floor_number = 8
 
 [node name="Floor10" parent="Floors" instance=ExtResource("5_02g3n")]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(175, 475)
+position = Vector2(0, 1350)
+size = Vector2(375, 125)
 floor_number = 9
