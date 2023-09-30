@@ -35,7 +35,7 @@ texture = ExtResource("3_qy5ry")
 shape = SubResource("CircleShape2D_7mk33")
 
 [node name="Camera2D" type="Camera2D" parent="Elevator"]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.9, 0.9)
 limit_top = 0
 limit_bottom = 1500
 position_smoothing_enabled = true
@@ -152,6 +152,15 @@ modulate = Color(0, 0, 0, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15_uk4qa")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -100
+offset_left = -1200.0
+offset_top = -800.0
+offset_right = 1800.0
+offset_bottom = 2400.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="call_elevator" from="Floors/Floor1" to="Elevator" method="call_recieved"]
 [connection signal="call_elevator" from="Floors/Floor2" to="Elevator" method="call_recieved"]
