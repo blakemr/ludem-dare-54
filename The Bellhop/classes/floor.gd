@@ -9,6 +9,7 @@ signal call_elevator
 @export var floor_indicator: Node
 @export var size_reference: ReferenceRect
 @export var call_reference: Marker2D
+@export var call_area: Area2D
 
 @export_range(0, 10) var floor_number: int = 0:
 	set(value):
@@ -34,4 +35,4 @@ func _ready() -> void:
 func input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			call_elevator.emit(call_position)
+			call_elevator.emit(call_position, floor_number)
