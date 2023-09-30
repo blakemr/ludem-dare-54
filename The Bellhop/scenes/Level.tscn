@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1tfy3664hdca"]
+[gd_scene load_steps=17 format=3 uid="uid://1tfy3664hdca"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_m78fd"]
 [ext_resource type="Script" path="res://classes/Elevator.gd" id="2_db4c8"]
@@ -8,6 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://ce636yrftmi8h" path="res://assets/circle.svg" id="6_sp3hh"]
 [ext_resource type="Texture2D" uid="uid://bylrudolu3ei5" path="res://assets/teardrop.svg" id="7_osow5"]
 [ext_resource type="Texture2D" uid="uid://d0mst5g7vghir" path="res://assets/moon.svg" id="8_215ew"]
+[ext_resource type="Texture2D" uid="uid://ot2frvafv77h" path="res://assets/triangle.svg" id="9_qsym6"]
+[ext_resource type="Texture2D" uid="uid://cp28tmt6iiyy4" path="res://assets/square.svg" id="10_wap2w"]
+[ext_resource type="Texture2D" uid="uid://ccfeaoasjobbu" path="res://assets/pentagon.svg" id="11_xmvsm"]
+[ext_resource type="Texture2D" uid="uid://bmgja1u80u2ns" path="res://assets/hexagon.svg" id="12_5i5yq"]
+[ext_resource type="Texture2D" uid="uid://bdhw1gpn78nqp" path="res://assets/7-splat.svg" id="13_wsxue"]
+[ext_resource type="Texture2D" uid="uid://cab0kyh8mluq0" path="res://assets/9-cloud.svg" id="14_ndoah"]
+[ext_resource type="Texture2D" uid="uid://bu0io2elmd3as" path="res://assets/10-star.svg" id="15_uk4qa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mk33"]
 
@@ -37,7 +44,6 @@ script = ExtResource("3_8gn07")
 [node name="Floors" type="Node" parent="."]
 
 [node name="Floor1" parent="Floors" instance=ExtResource("5_02g3n")]
-size = Vector2(325, 100)
 
 [node name="Sprite2D" type="Sprite2D" parent="Floors/Floor1"]
 modulate = Color(1, 1, 1, 0.392157)
@@ -47,7 +53,6 @@ texture = ExtResource("6_sp3hh")
 
 [node name="Floor2" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 150)
-size = Vector2(325, 100)
 call_position = Vector2(425, 212)
 floor_number = 1
 
@@ -59,7 +64,6 @@ texture = ExtResource("7_osow5")
 
 [node name="Floor3" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 300)
-size = Vector2(325, 100)
 call_position = Vector2(425, 362)
 floor_number = 2
 
@@ -71,45 +75,80 @@ texture = ExtResource("8_215ew")
 
 [node name="Floor4" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 450)
-size = Vector2(325, 100)
 call_position = Vector2(425, 512)
 floor_number = 3
 
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor4"]
+modulate = Color(0, 1, 0, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_qsym6")
+
 [node name="Floor5" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 600)
-size = Vector2(325, 100)
 call_position = Vector2(425, 662)
 floor_number = 4
 
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor5"]
+modulate = Color(0.996078, 0.996078, 0, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_wap2w")
+
 [node name="Floor6" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 750)
-size = Vector2(325, 100)
 call_position = Vector2(425, 812)
 floor_number = 5
 
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor6"]
+modulate = Color(0.623529, 0.12549, 0.937255, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_xmvsm")
+
 [node name="Floor7" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 900)
-size = Vector2(325, 100)
 call_position = Vector2(425, 962)
 floor_number = 6
 
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor7"]
+modulate = Color(0.996078, 0.643137, 0, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_5i5yq")
+
 [node name="Floor8" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 1050)
-size = Vector2(325, 100)
 call_position = Vector2(425, 1112)
 floor_number = 7
 
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor8"]
+modulate = Color(0.25098, 0.87451, 0.811765, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("13_wsxue")
+
 [node name="Floor9" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 1200)
-size = Vector2(325, 100)
 call_position = Vector2(425, 1262)
 floor_number = 8
 
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor9"]
+modulate = Color(0.996078, 0, 0.996078, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("14_ndoah")
+
 [node name="Floor10" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 1350)
-size = Vector2(325, 100)
 call_position = Vector2(425, 1412)
 floor_number = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor10"]
+modulate = Color(0, 0, 0, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("15_uk4qa")
 
 [connection signal="call_elevator" from="Floors/Floor1" to="Elevator" method="call_recieved"]
 [connection signal="call_elevator" from="Floors/Floor2" to="Elevator" method="call_recieved"]
