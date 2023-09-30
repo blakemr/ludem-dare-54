@@ -40,6 +40,7 @@ position_smoothing_enabled = true
 
 [node name="PassengerGenerator" type="Timer" parent="."]
 script = ExtResource("3_8gn07")
+floor_textures = Array[Texture]([ExtResource("6_sp3hh"), ExtResource("7_osow5"), ExtResource("8_215ew"), ExtResource("9_qsym6"), ExtResource("10_wap2w"), ExtResource("11_xmvsm"), ExtResource("12_5i5yq"), ExtResource("13_wsxue"), ExtResource("14_ndoah"), ExtResource("15_uk4qa")])
 
 [node name="Floors" type="Node" parent="."]
 
