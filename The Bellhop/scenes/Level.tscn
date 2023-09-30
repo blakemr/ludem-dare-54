@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://1tfy3664hdca"]
+[gd_scene load_steps=10 format=3 uid="uid://1tfy3664hdca"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_m78fd"]
 [ext_resource type="Script" path="res://classes/Elevator.gd" id="2_db4c8"]
 [ext_resource type="Script" path="res://classes/PassengerGenerator.gd" id="3_8gn07"]
 [ext_resource type="Texture2D" uid="uid://kjkwyic8k8c2" path="res://icon.svg" id="3_qy5ry"]
 [ext_resource type="PackedScene" uid="uid://bgnm3mh4jpy7" path="res://scenes/Floor.tscn" id="5_02g3n"]
+[ext_resource type="Texture2D" uid="uid://ce636yrftmi8h" path="res://assets/circle.svg" id="6_sp3hh"]
+[ext_resource type="Texture2D" uid="uid://bylrudolu3ei5" path="res://assets/teardrop.svg" id="7_osow5"]
+[ext_resource type="Texture2D" uid="uid://d0mst5g7vghir" path="res://assets/moon.svg" id="8_215ew"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mk33"]
 
@@ -36,17 +39,35 @@ script = ExtResource("3_8gn07")
 [node name="Floor1" parent="Floors" instance=ExtResource("5_02g3n")]
 size = Vector2(325, 100)
 
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor1"]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_sp3hh")
+
 [node name="Floor2" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 150)
 size = Vector2(325, 100)
 call_position = Vector2(425, 212)
 floor_number = 1
 
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor2"]
+modulate = Color(1, 0, 0, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_osow5")
+
 [node name="Floor3" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 300)
 size = Vector2(325, 100)
 call_position = Vector2(425, 362)
 floor_number = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Floors/Floor3"]
+modulate = Color(0, 0, 1, 0.392157)
+position = Vector2(325, 50)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_215ew")
 
 [node name="Floor4" parent="Floors" instance=ExtResource("5_02g3n")]
 position = Vector2(0, 450)

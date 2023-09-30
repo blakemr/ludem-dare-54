@@ -7,7 +7,7 @@ extends Sprite2D
 var target_floor: int = 1
 var start_floor: int = 1
 
-func _ready() -> void:
+func _init() -> void:
 	z_index = 10
 	texture = load("res://icon.svg")
 
@@ -19,6 +19,7 @@ func _ready() -> void:
 
 	modulate = Globals.floor_colors[target_floor]
 
+func _ready() -> void:
 	var tween = create_tween()
 	scale = Vector2.ZERO
 	tween.tween_property(self, "scale", Vector2.ONE * 0.2, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)

@@ -7,8 +7,13 @@ func _ready() -> void:
 	$PassengerGenerator.start()
 
 func place_passenger(pas: Passenger) -> void:
-	add_child(pas)
 	var floors = $Floors.get_children()
-	var floor_size = floors[pas.target_floor].size
-	var floor_position = floors[pas.start_floor].global_position
-	pas.global_position = floor_position + floor_size/2 + Vector2(randf_range(-floor_size.x/2, floor_size.x/2), randf_range(-floor_size.y/2, floor_size.y/2))
+	var current_floor = floors[pas.start_floor]
+	var size = current_floor.size
+	#var floor_size = floors[pas.start_floor].size
+	#var floor_position = floors[pas.start_floor].global_position
+
+	current_floor.add_child(pas)
+	pas.position = size/2 + Vector2(randf_range(-size.x/2, size.x/2), randf_range(-size.y/2, size.y/2)) 
+
+	#pas.global_position = floor_position + floor_size/2 + Vector2(randf_range(-floor_size.x/2, floor_size.x/2), randf_range(-floor_size.y/2, floor_size.y/2))
