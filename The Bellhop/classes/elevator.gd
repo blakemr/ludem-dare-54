@@ -39,12 +39,26 @@ func move(pos: Vector2) -> void:
 
 	var tween = create_tween()
 	tween.tween_property(self, "position", pos, animation_speed).set_trans(Tween.TRANS_BACK)
+
+	# Loading block
 	moving = true
+	
 	await tween.finished
-	moving = false
 	unload_passengers()
+	load_passengers()
+
+	moving = false
 	
 func unload_passengers():
+	for child in get_children():
+		if child is Passenger:
+			remove_passenger(child)
+			get_tree().root.add_child(child)
+			var child_tween = Tween.new()
+			child_tween.tween_property(child, "global_position", child.global_position + Vector2(2000, 0), 2).set_trans(Tween.TRANS_BACK)
+			child_tween.finished.connect(child.queue_free)
+
+func load_passengers():
 	pass
 
 func add_passenger(pas: Passenger) -> void:
