@@ -1,4 +1,6 @@
-extends Node
+extends Node2D
+
+@export var number_of_floors = Globals.number_of_floors
 
 # Test script
 func _ready() -> void:
