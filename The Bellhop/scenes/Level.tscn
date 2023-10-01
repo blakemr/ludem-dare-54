@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://1tfy3664hdca"]
+[gd_scene load_steps=19 format=3 uid="uid://1tfy3664hdca"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_m78fd"]
 [ext_resource type="Script" path="res://classes/Elevator.gd" id="2_db4c8"]
 [ext_resource type="Script" path="res://classes/PassengerGenerator.gd" id="3_8gn07"]
-[ext_resource type="Texture2D" uid="uid://kjkwyic8k8c2" path="res://icon.svg" id="3_qy5ry"]
+[ext_resource type="Texture2D" uid="uid://btmlnipb6aq6v" path="res://assets/elevator-green.svg" id="3_yplxr"]
+[ext_resource type="Texture2D" uid="uid://ye27b5vl1apf" path="res://assets/elevator-red.svg" id="4_m2cee"]
 [ext_resource type="PackedScene" uid="uid://bgnm3mh4jpy7" path="res://scenes/Floor.tscn" id="5_02g3n"]
 [ext_resource type="Texture2D" uid="uid://ce636yrftmi8h" path="res://assets/circle.svg" id="6_sp3hh"]
 [ext_resource type="Texture2D" uid="uid://bylrudolu3ei5" path="res://assets/teardrop.svg" id="7_osow5"]
@@ -16,18 +17,33 @@
 [ext_resource type="Texture2D" uid="uid://cab0kyh8mluq0" path="res://assets/9-cloud.svg" id="14_ndoah"]
 [ext_resource type="Texture2D" uid="uid://bu0io2elmd3as" path="res://assets/10-star.svg" id="15_uk4qa"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_cywk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yplxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m2cee")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mk33"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_m78fd")
 
 [node name="Elevator" type="Node2D" parent="."]
-position = Vector2(425, 50)
+position = Vector2(425, 62)
 script = ExtResource("2_db4c8")
 
-[node name="Sprite2D" type="Sprite2D" parent="Elevator"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_qy5ry")
+[node name="ElevatorSprite" type="AnimatedSprite2D" parent="Elevator"]
+z_index = 5
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_cywk5")
 
 [node name="Area2D" type="Area2D" parent="Elevator"]
 
@@ -35,9 +51,8 @@ texture = ExtResource("3_qy5ry")
 shape = SubResource("CircleShape2D_7mk33")
 
 [node name="Camera2D" type="Camera2D" parent="Elevator"]
-zoom = Vector2(0.9, 0.9)
 limit_top = 0
-limit_bottom = 1500
+limit_bottom = 750
 position_smoothing_enabled = true
 
 [node name="PassengerGenerator" type="Timer" parent="."]

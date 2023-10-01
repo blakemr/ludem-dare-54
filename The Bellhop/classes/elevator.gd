@@ -11,6 +11,8 @@ signal floor_arrived
 @export var animation_speed = 1.0
 var current_floor: int = 0
 
+@onready var sprite := $ElevatorSprite
+
 func _ready() -> void:
 	z_index = 5
 
@@ -43,9 +45,9 @@ func call_recieved(pos: Vector2, floor_node: Floor) -> void:
 	load_passengers(floor_node)
 
 	# Wait for loading/unloading
-	modulate = Color.RED
+	sprite.frame = 1
 	await get_tree().create_timer(animation_speed).timeout
-	modulate = Color.WHITE
+	sprite.frame = 0
 
 	moving = false
 
