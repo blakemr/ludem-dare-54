@@ -35,7 +35,6 @@ animations = [{
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_m78fd")
-number_of_floors = 5
 
 [node name="Elevator" type="Node2D" parent="."]
 position = Vector2(425, 62)
@@ -63,6 +62,7 @@ floor_textures = Array[Texture]([ExtResource("6_sp3hh"), ExtResource("7_osow5"),
 [node name="Floors" type="Node2D" parent="."]
 
 [node name="Floor1" parent="Floors" instance=ExtResource("5_02g3n")]
+floor_number = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="Floors/Floor1"]
 modulate = Color(1, 1, 1, 0.392157)
