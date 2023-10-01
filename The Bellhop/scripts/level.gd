@@ -50,7 +50,8 @@ func place_passenger(pas: Passenger) -> void:
 
 	#pas.global_position = floor_position + floor_size/2 + Vector2(randf_range(-floor_size.x/2, floor_size.x/2), randf_range(-floor_size.y/2, floor_size.y/2))
 
-	score += 1
+func add_score(value: int) -> void:
+	score += value
 
 func set_max_passengers(value: int) -> void:
 	if not max_passenger_label: return

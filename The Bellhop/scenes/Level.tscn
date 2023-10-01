@@ -282,6 +282,7 @@ offset_right = -250.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[connection signal="dropped_off_passengers" from="Elevator" to="." method="add_score"]
 [connection signal="over_capacity" from="Elevator" to="." method="game_over"]
 [connection signal="passengers_changed" from="Elevator" to="." method="set_current_passengers"]
 [connection signal="call_elevator" from="Floors/Floor1" to="Elevator" method="call_recieved"]

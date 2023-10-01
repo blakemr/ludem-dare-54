@@ -4,6 +4,7 @@ extends Node2D
 signal over_capacity
 signal over_weight
 signal passengers_changed
+signal dropped_off_passengers
 
 signal floor_arrived
 
@@ -69,6 +70,7 @@ func move(pos: Vector2) -> Tween:
 	return tween
 	
 func unload_passengers() -> void:
+	var unload_count = 0
 	for child in get_children():
 		if child is Passenger and child.target_floor == current_floor:
 			var child_position = child.global_position
@@ -79,7 +81,10 @@ func unload_passengers() -> void:
 			child_tween.tween_property(child, "position", child.position + Vector2(-2000, 0), animation_speed).set_trans(Tween.TRANS_BACK)
 			child_tween.finished.connect(child.queue_free)
 
+			unload_count += 1
+
 	passengers_changed.emit(capacity)
+	dropped_off_passengers.emit(unload_count)
 
 func load_passengers(floor_node: Floor) -> void:
 	# Call current floor
