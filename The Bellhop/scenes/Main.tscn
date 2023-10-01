@@ -1,9 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbi5krbaxj0sw"]
 
 [ext_resource type="PackedScene" uid="uid://bjuxmyxaimt3s" path="res://menus/MainMenu.tscn" id="1_ed3yu"]
-[ext_resource type="PackedScene" uid="uid://1tfy3664hdca" path="res://scenes/Level.tscn" id="2_18oth"]
+[ext_resource type="AudioStream" uid="uid://ckp2sg6fay1a4" path="res://assets/sounds/backgroundmusic.wav" id="2_v4rwa"]
 
 [node name="Main" type="Node"]
 
 [node name="MainMenu" parent="." instance=ExtResource("1_ed3yu")]
-start_level = ExtResource("2_18oth")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_v4rwa")
+volume_db = -9.0
+autoplay = true
