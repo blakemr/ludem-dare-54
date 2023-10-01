@@ -35,4 +35,4 @@ func _ready() -> void:
 func input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			call_elevator.emit(call_position, floor_number)
+			call_elevator.emit(call_position, self)
