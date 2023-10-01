@@ -12,6 +12,9 @@ var score: int = 0:
 
 		score = value
 
+@export var passenger_generator: PassengerGenerator
+@export var initial_spawn_speed: float = 2.0
+
 @export var score_label: Label
 
 @export var demo: bool = false
@@ -35,6 +38,8 @@ func _ready() -> void:
 
 	set_max_passengers($Elevator.max_capacity)
 
+	passenger_generator.wait_time = initial_spawn_speed
+
 	score = 0
 
 func place_passenger(pas: Passenger) -> void:
@@ -53,6 +58,12 @@ func place_passenger(pas: Passenger) -> void:
 func add_score(value: int) -> void:
 	score += value
 
+	# formula tuned via testing
+	# a score of 1 = 2s spawn
+	# a score of 7 ~= 1s spawn
+	# a score of 79 = 0.5s spawn
+	passenger_generator.wait_time = initial_spawn_speed*log(3)/log(score + 2)
+
 func set_max_passengers(value: int) -> void:
 	if not max_passenger_label: return
 	max_passenger_label.text = str(value)
@@ -67,7 +78,6 @@ func show_pause_screen() -> void:
 func game_over() -> void:
 	get_tree().root.add_child(game_over_scene)
 	if game_over_scene.get("score") != null:
-		print("set score?")
 		game_over_scene.score = str(score)
 
 	queue_free()

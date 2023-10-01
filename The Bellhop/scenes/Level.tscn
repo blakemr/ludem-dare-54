@@ -38,10 +38,11 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mk33"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("pause_screen", "score_label")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("pause_screen", "passenger_generator", "score_label")]
 script = ExtResource("1_m78fd")
 pause_screen = NodePath("PauseMenu")
 game_over_scene_path = "res://menus/GameOverMenu.tscn"
+passenger_generator = NodePath("PassengerGenerator")
 score_label = NodePath("GUI/CenterContainer/VBoxContainer/HBoxContainer2/ScoreLabel")
 
 [node name="Elevator" type="Node2D" parent="." node_paths=PackedStringArray("arrive_sound", "leave_sound")]
