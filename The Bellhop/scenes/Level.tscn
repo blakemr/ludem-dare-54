@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://1tfy3664hdca"]
+[gd_scene load_steps=24 format=3 uid="uid://1tfy3664hdca"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_m78fd"]
 [ext_resource type="Script" path="res://classes/Elevator.gd" id="2_db4c8"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cab0kyh8mluq0" path="res://assets/9-cloud.svg" id="14_ndoah"]
 [ext_resource type="Texture2D" uid="uid://bu0io2elmd3as" path="res://assets/10-star.svg" id="15_uk4qa"]
 [ext_resource type="FontVariation" uid="uid://mum1kdfyt5gc" path="res://assets/fonts/JosefinSans.tres" id="20_tburb"]
+[ext_resource type="PackedScene" uid="uid://cl2o1iuj44bc7" path="res://menus/PauseMenu.tscn" id="21_hvl0p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cywk5"]
 animations = [{
@@ -37,8 +38,10 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mk33"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("pause_screen")]
 script = ExtResource("1_m78fd")
+pause_screen = NodePath("PauseMenu")
+game_over_scene_path = "res://menus/GameOverMenu.tscn"
 
 [node name="Elevator" type="Node2D" parent="." node_paths=PackedStringArray("arrive_sound", "leave_sound")]
 z_index = 5
@@ -247,6 +250,16 @@ theme_override_fonts/font = ExtResource("20_tburb")
 theme_override_font_sizes/font_size = 30
 text = "Y"
 
+[node name="PauseMenu" parent="." instance=ExtResource("21_hvl0p")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -250.0
+offset_right = -250.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="over_capacity" from="Elevator" to="." method="game_over"]
 [connection signal="passengers_changed" from="Elevator" to="." method="set_current_passengers"]
 [connection signal="call_elevator" from="Floors/Floor1" to="Elevator" method="call_recieved"]
 [connection signal="call_elevator" from="Floors/Floor2" to="Elevator" method="call_recieved"]

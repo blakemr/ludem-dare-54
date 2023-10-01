@@ -16,6 +16,7 @@ var current_floor: int = 0
 @export var leave_sound: AudioStreamPlayer
 
 @onready var sprite := $ElevatorSprite
+
 var capacity: int = 0:
 	set(value):
 		if value > max_capacity:
@@ -33,8 +34,10 @@ var weight: int = 0:
 var moving: bool = false
 
 func _ready() -> void:
-	passengers_changed.emit(capacity)
 	z_index = 5
+	
+	await owner.ready
+	passengers_changed.emit(capacity)
 
 func call_recieved(pos: Vector2, floor_node: Floor) -> void:
 	if moving: return
@@ -70,7 +73,7 @@ func unload_passengers() -> void:
 		if child is Passenger and child.target_floor == current_floor:
 			var child_position = child.global_position
 			remove_passenger(child)
-			get_tree().root.add_child(child)
+			get_parent().add_child(child)
 			child.global_position = child_position
 			var child_tween = create_tween()
 			child_tween.tween_property(child, "position", child.position + Vector2(-2000, 0), animation_speed).set_trans(Tween.TRANS_BACK)
@@ -91,7 +94,8 @@ func load_passengers(floor_node: Floor) -> void:
 			var child_tween = create_tween()
 			child_tween.tween_property(child, "position", Vector2.ZERO + Vector2(randf_range(-25, 25), randf_range(-25, 25)), animation_speed).set_trans(Tween.TRANS_SINE)
 
-	passengers_changed.emit(capacity)
+	if capacity <= max_capacity:
+		passengers_changed.emit(capacity)
 
 func add_passenger(pas: Passenger) -> void:
 	add_child(pas)

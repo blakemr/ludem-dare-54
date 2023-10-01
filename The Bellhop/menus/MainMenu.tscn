@@ -14,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jmxe1")
 tutorial_screen = NodePath("HowToPlay")
+start_level_path = "res://scenes/Level.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 z_index = 1000
@@ -64,10 +65,9 @@ flat = true
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
 layout_mode = 0
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 1350.0
-offset_bottom = 775.0
+offset_left = -50.0
+offset_right = 1325.0
+offset_bottom = 800.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 

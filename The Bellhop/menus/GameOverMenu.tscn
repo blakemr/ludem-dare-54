@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvfwl646jy6lx"]
+[gd_scene load_steps=5 format=3 uid="uid://bvfwl646jy6lx"]
 
+[ext_resource type="Script" path="res://menus/GameOverMenu.gd" id="1_4262x"]
 [ext_resource type="FontFile" uid="uid://chvboiic3bkln" path="res://assets/fonts/LibreBaskerville-Regular.ttf" id="1_em8kg"]
 [ext_resource type="FontVariation" uid="uid://mum1kdfyt5gc" path="res://assets/fonts/JosefinSans.tres" id="2_eqg8t"]
 [ext_resource type="PackedScene" uid="uid://bho8igw1qgk1a" path="res://scenes/DemoLevel.tscn" id="3_2gy4g"]
@@ -11,6 +12,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4262x")
+level_scene_path = "res://scenes/Level.tscn"
+main_menu_scene_path = "res://menus/MainMenu.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 z_index = 1000
@@ -145,6 +149,9 @@ call_position = Vector2(1175, 662)
 
 [node name="AutoCallTimer" parent="Level2" index="3" node_paths=PackedStringArray("auto_calls")]
 auto_calls = [NodePath("../Floors/Floor6"), NodePath("../Floors/Floor7"), NodePath("../Floors/Floor8"), NodePath("../Floors/Floor9"), NodePath("../Floors/Floor10")]
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="." method="new_game"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MainMenuButton" to="." method="main_menu"]
 
 [editable path="Level"]
 [editable path="Level2"]
