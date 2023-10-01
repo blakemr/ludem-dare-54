@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjuxmyxaimt3s"]
+[gd_scene load_steps=4 format=3 uid="uid://bjuxmyxaimt3s"]
 
 [ext_resource type="FontFile" uid="uid://chvboiic3bkln" path="res://assets/fonts/LibreBaskerville-Regular.ttf" id="1_kr27n"]
 [ext_resource type="FontVariation" uid="uid://mum1kdfyt5gc" path="res://assets/fonts/JosefinSans.tres" id="2_6pql5"]
+[ext_resource type="PackedScene" uid="uid://1tfy3664hdca" path="res://scenes/Level.tscn" id="3_mss07"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -66,3 +67,98 @@ offset_right = 1350.0
 offset_bottom = 775.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Level" parent="." instance=ExtResource("3_mss07")]
+position = Vector2(-250, 0)
+
+[node name="Camera2D" parent="Level/Elevator" index="2"]
+enabled = false
+
+[node name="Background" parent="Level" index="3"]
+visible = false
+
+[node name="Level2" parent="." instance=ExtResource("3_mss07")]
+position = Vector2(1600, -750)
+scale = Vector2(-1, 1)
+
+[node name="Elevator" parent="Level2" index="0"]
+position = Vector2(425, 800)
+
+[node name="Camera2D" parent="Level2/Elevator" index="2"]
+enabled = false
+
+[node name="Floor1" parent="Level2/Floors" index="0" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 62)
+floor_indicator = NodePath("../../../Level/Floors/Floor1/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor1/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor1/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor1/ElevatorCall")
+
+[node name="Floor2" parent="Level2/Floors" index="1" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 212)
+floor_indicator = NodePath("../../../Level/Floors/Floor2/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor2/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor2/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor2/ElevatorCall")
+
+[node name="Floor3" parent="Level2/Floors" index="2" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 362)
+floor_indicator = NodePath("../../../Level/Floors/Floor3/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor3/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor3/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor3/ElevatorCall")
+
+[node name="Floor4" parent="Level2/Floors" index="3" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 512)
+floor_indicator = NodePath("../../../Level/Floors/Floor4/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor4/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor4/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor4/ElevatorCall")
+
+[node name="Floor5" parent="Level2/Floors" index="4" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 662)
+floor_indicator = NodePath("../../../Level/Floors/Floor5/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor5/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor5/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor5/ElevatorCall")
+
+[node name="Floor6" parent="Level2/Floors" index="5" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 812)
+floor_indicator = NodePath("../../../Level/Floors/Floor6/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor6/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor6/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor6/ElevatorCall")
+
+[node name="Floor7" parent="Level2/Floors" index="6" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 962)
+floor_indicator = NodePath("../../../Level/Floors/Floor7/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor7/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor7/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor7/ElevatorCall")
+
+[node name="Floor8" parent="Level2/Floors" index="7" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 1112)
+floor_indicator = NodePath("../../../Level/Floors/Floor8/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor8/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor8/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor8/ElevatorCall")
+
+[node name="Floor9" parent="Level2/Floors" index="8" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 1262)
+floor_indicator = NodePath("../../../Level/Floors/Floor9/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor9/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor9/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor9/ElevatorCall")
+
+[node name="Floor10" parent="Level2/Floors" index="9" node_paths=PackedStringArray("floor_indicator", "size_reference", "call_reference", "call_area")]
+call_position = Vector2(250, 1412)
+floor_indicator = NodePath("../../../Level/Floors/Floor10/ColorRect")
+size_reference = NodePath("../../../Level/Floors/Floor10/ReferenceRect")
+call_reference = NodePath("../../../Level/Floors/Floor10/ElevatorCallPosition")
+call_area = NodePath("../../../Level/Floors/Floor10/ElevatorCall")
+
+[node name="Background" parent="Level2" index="3"]
+visible = false
+
+[editable path="Level"]
+[editable path="Level2"]
