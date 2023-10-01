@@ -13,11 +13,11 @@ signal call_elevator
 
 @export_range(0, 10) var floor_number: int = 0:
 	set(value):
-		if value >= 0 and value < Globals.number_of_floors:
+		if value >= 0 and value < len(Globals.floor_colors):
 			floor_indicator.modulate = Globals.floor_colors[value]
 
 		else:
-			print("Not a floor!")
+			print("No floor color!")
 
 		floor_number = value
 
