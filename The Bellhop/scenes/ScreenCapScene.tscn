@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3kxqja15p0nw"]
+
+[ext_resource type="PackedScene" uid="uid://bho8igw1qgk1a" path="res://scenes/DemoLevel.tscn" id="1_k1dc8"]
+[ext_resource type="FontFile" uid="uid://chvboiic3bkln" path="res://assets/fonts/LibreBaskerville-Regular.ttf" id="2_li1cf"]
+
+[node name="ScreenCapScene" type="Node2D"]
+
+[node name="Level" parent="." instance=ExtResource("1_k1dc8")]
+position = Vector2(1045, -538)
+scale = Vector2(-0.7, 0.7)
+
+[node name="Elevator" parent="Level" index="0"]
+position = Vector2(425, 1197.14)
+
+[node name="Level2" parent="." instance=ExtResource("1_k1dc8")]
+position = Vector2(50, 0)
+scale = Vector2(0.7, 0.7)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_left = 225.0
+offset_right = 865.0
+offset_bottom = 512.0
+editor_only = false
+
+[node name="CenterContainer" type="CenterContainer" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ReferenceRect/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_li1cf")
+theme_override_font_sizes/font_size = 45
+text = "The Bellhop"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1000
+offset_left = -175.0
+offset_top = -125.0
+offset_right = 1250.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[editable path="Level"]
