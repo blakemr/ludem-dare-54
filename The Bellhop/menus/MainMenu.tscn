@@ -71,36 +71,6 @@ color = Color(0, 0, 0, 1)
 [node name="Level" parent="." instance=ExtResource("3_gn5pd")]
 position = Vector2(-275, 0)
 
-[node name="Floor1" parent="Level/Floors" index="0"]
-call_position = Vector2(150, 62)
-
-[node name="Floor2" parent="Level/Floors" index="1"]
-call_position = Vector2(150, 212)
-
-[node name="Floor3" parent="Level/Floors" index="2"]
-call_position = Vector2(150, 362)
-
-[node name="Floor4" parent="Level/Floors" index="3"]
-call_position = Vector2(150, 512)
-
-[node name="Floor5" parent="Level/Floors" index="4"]
-call_position = Vector2(150, 662)
-
-[node name="Floor6" parent="Level/Floors" index="5"]
-call_position = Vector2(150, 812)
-
-[node name="Floor7" parent="Level/Floors" index="6"]
-call_position = Vector2(150, 962)
-
-[node name="Floor8" parent="Level/Floors" index="7"]
-call_position = Vector2(150, 1112)
-
-[node name="Floor9" parent="Level/Floors" index="8"]
-call_position = Vector2(150, 1262)
-
-[node name="Floor10" parent="Level/Floors" index="9"]
-call_position = Vector2(150, 1412)
-
 [node name="Level2" parent="." instance=ExtResource("3_gn5pd")]
 position = Vector2(1600, -750)
 scale = Vector2(-1, 1)
@@ -138,5 +108,4 @@ call_position = Vector2(1175, 662)
 [node name="AutoCallTimer" parent="Level2" index="3" node_paths=PackedStringArray("auto_calls")]
 auto_calls = [NodePath("../Floors/Floor6"), NodePath("../Floors/Floor7"), NodePath("../Floors/Floor8"), NodePath("../Floors/Floor9"), NodePath("../Floors/Floor10")]
 
-[editable path="Level"]
 [editable path="Level2"]

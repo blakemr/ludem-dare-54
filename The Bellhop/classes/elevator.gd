@@ -53,7 +53,7 @@ func call_recieved(pos: Vector2, floor_node: Floor) -> void:
 
 func move(pos: Vector2) -> Tween:
 	var tween = create_tween()
-	tween.tween_property(self, "position", pos, animation_speed).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(self, "global_position", pos, animation_speed).set_trans(Tween.TRANS_BACK)
 
 	return tween
 	
