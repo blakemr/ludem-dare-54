@@ -9,6 +9,7 @@ signal floor_arrived
 @export var max_capacity: int = 10
 @export var max_weight_limit: int = 100
 @export var animation_speed = 1.0
+@export var lockout_time = 1.0
 var current_floor: int = 0
 
 @onready var sprite := $ElevatorSprite
@@ -46,7 +47,7 @@ func call_recieved(pos: Vector2, floor_node: Floor) -> void:
 
 	# Wait for loading/unloading
 	sprite.frame = 1
-	await get_tree().create_timer(animation_speed).timeout
+	await get_tree().create_timer(lockout_time).timeout
 	sprite.frame = 0
 
 	moving = false
