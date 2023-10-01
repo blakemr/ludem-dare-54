@@ -3,6 +3,7 @@ extends Node2D
 
 signal over_capacity
 signal over_weight
+signal passengers_changed
 
 signal floor_arrived
 
@@ -11,12 +12,10 @@ signal floor_arrived
 @export var animation_speed = 1.0
 @export var lockout_time = 1.0
 var current_floor: int = 0
+@export var arrive_sound: AudioStreamPlayer
+@export var leave_sound: AudioStreamPlayer
 
 @onready var sprite := $ElevatorSprite
-
-func _ready() -> void:
-	z_index = 5
-
 var capacity: int = 0:
 	set(value):
 		if value > max_capacity:
@@ -33,6 +32,10 @@ var weight: int = 0:
 
 var moving: bool = false
 
+func _ready() -> void:
+	passengers_changed.emit(capacity)
+	z_index = 5
+
 func call_recieved(pos: Vector2, floor_node: Floor) -> void:
 	if moving: return
 
@@ -47,8 +50,12 @@ func call_recieved(pos: Vector2, floor_node: Floor) -> void:
 
 	# Wait for loading/unloading
 	sprite.frame = 1
+	if arrive_sound:
+		arrive_sound.play()
 	await get_tree().create_timer(lockout_time).timeout
 	sprite.frame = 0
+	if leave_sound:
+		leave_sound.play()
 
 	moving = false
 
@@ -69,6 +76,8 @@ func unload_passengers() -> void:
 			child_tween.tween_property(child, "position", child.position + Vector2(-2000, 0), animation_speed).set_trans(Tween.TRANS_BACK)
 			child_tween.finished.connect(child.queue_free)
 
+	passengers_changed.emit(capacity)
+
 func load_passengers(floor_node: Floor) -> void:
 	# Call current floor
 	# Take all the passengers
@@ -82,6 +91,7 @@ func load_passengers(floor_node: Floor) -> void:
 			var child_tween = create_tween()
 			child_tween.tween_property(child, "position", Vector2.ZERO + Vector2(randf_range(-25, 25), randf_range(-25, 25)), animation_speed).set_trans(Tween.TRANS_SINE)
 
+	passengers_changed.emit(capacity)
 
 func add_passenger(pas: Passenger) -> void:
 	add_child(pas)

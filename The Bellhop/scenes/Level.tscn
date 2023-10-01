@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1tfy3664hdca"]
+[gd_scene load_steps=23 format=3 uid="uid://1tfy3664hdca"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_m78fd"]
 [ext_resource type="Script" path="res://classes/Elevator.gd" id="2_db4c8"]
@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://ye27b5vl1apf" path="res://assets/elevator-red.svg" id="4_m2cee"]
 [ext_resource type="PackedScene" uid="uid://bgnm3mh4jpy7" path="res://scenes/Floor.tscn" id="5_02g3n"]
 [ext_resource type="Texture2D" uid="uid://uq2wyq2blcfl" path="res://assets/elevator_cable.svg" id="5_mam17"]
+[ext_resource type="AudioStream" uid="uid://jq20qb38as0h" path="res://assets/sounds/high-boop-clipped.wav" id="6_r614v"]
 [ext_resource type="Texture2D" uid="uid://ce636yrftmi8h" path="res://assets/circle.svg" id="6_sp3hh"]
 [ext_resource type="Texture2D" uid="uid://bylrudolu3ei5" path="res://assets/teardrop.svg" id="7_osow5"]
+[ext_resource type="AudioStream" uid="uid://dtms0ebwwluar" path="res://assets/sounds/low-boop-clipped.wav" id="7_qd2qm"]
 [ext_resource type="Texture2D" uid="uid://d0mst5g7vghir" path="res://assets/moon.svg" id="8_215ew"]
 [ext_resource type="Texture2D" uid="uid://ot2frvafv77h" path="res://assets/triangle.svg" id="9_qsym6"]
 [ext_resource type="Texture2D" uid="uid://cp28tmt6iiyy4" path="res://assets/square.svg" id="10_wap2w"]
@@ -17,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bdhw1gpn78nqp" path="res://assets/7-splat.svg" id="13_wsxue"]
 [ext_resource type="Texture2D" uid="uid://cab0kyh8mluq0" path="res://assets/9-cloud.svg" id="14_ndoah"]
 [ext_resource type="Texture2D" uid="uid://bu0io2elmd3as" path="res://assets/10-star.svg" id="15_uk4qa"]
+[ext_resource type="FontVariation" uid="uid://mum1kdfyt5gc" path="res://assets/fonts/JosefinSans.tres" id="20_tburb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cywk5"]
 animations = [{
@@ -37,10 +40,12 @@ animations = [{
 [node name="Level" type="Node2D"]
 script = ExtResource("1_m78fd")
 
-[node name="Elevator" type="Node2D" parent="."]
+[node name="Elevator" type="Node2D" parent="." node_paths=PackedStringArray("arrive_sound", "leave_sound")]
 z_index = 5
 position = Vector2(425, 62)
 script = ExtResource("2_db4c8")
+arrive_sound = NodePath("LowBoop")
+leave_sound = NodePath("HighBoop")
 
 [node name="ElevatorSprite" type="AnimatedSprite2D" parent="Elevator"]
 z_index = 1
@@ -66,6 +71,13 @@ texture = ExtResource("5_mam17")
 position = Vector2(25, -2433.5)
 scale = Vector2(0.5, 37.5547)
 texture = ExtResource("5_mam17")
+
+[node name="HighBoop" type="AudioStreamPlayer" parent="Elevator"]
+stream = ExtResource("6_r614v")
+
+[node name="LowBoop" type="AudioStreamPlayer" parent="Elevator"]
+stream = ExtResource("7_qd2qm")
+volume_db = -3.0
 
 [node name="PassengerGenerator" type="Timer" parent="."]
 script = ExtResource("3_8gn07")
@@ -189,6 +201,53 @@ offset_bottom = 2400.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="GUI" type="Control" parent="."]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GUI"]
+layout_mode = 0
+offset_left = 500.0
+offset_right = 1075.0
+offset_bottom = 150.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="PassengerLabel" type="Label" parent="GUI/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_tburb")
+theme_override_font_sizes/font_size = 30
+text = "Passengers:"
+
+[node name="PassengerCountLabel" type="Label" parent="GUI/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_tburb")
+theme_override_font_sizes/font_size = 30
+text = "X"
+
+[node name="ColonLabel" type="Label" parent="GUI/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_tburb")
+theme_override_font_sizes/font_size = 30
+text = "out of"
+
+[node name="MaxPassengerCountLabel" type="Label" parent="GUI/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_tburb")
+theme_override_font_sizes/font_size = 30
+text = "Y"
+
+[connection signal="passengers_changed" from="Elevator" to="." method="set_current_passengers"]
 [connection signal="call_elevator" from="Floors/Floor1" to="Elevator" method="call_recieved"]
 [connection signal="call_elevator" from="Floors/Floor2" to="Elevator" method="call_recieved"]
 [connection signal="call_elevator" from="Floors/Floor3" to="Elevator" method="call_recieved"]

@@ -19,3 +19,9 @@ func place_passenger(pas: Passenger) -> void:
 	pas.position = size/2 + Vector2(randf_range(-size.x/2, size.x/2), randf_range(-size.y/2, size.y/2)) 
 
 	#pas.global_position = floor_position + floor_size/2 + Vector2(randf_range(-floor_size.x/2, floor_size.x/2), randf_range(-floor_size.y/2, floor_size.y/2))
+
+func set_max_passengers(value: int) -> void:
+	%MaxPassengerCountLabel.text = str(value)
+
+func set_current_passengers(value: int) -> void:
+	%PassengerCountLabel.text = str(value)
