@@ -62,7 +62,7 @@ func add_score(value: int) -> void:
 	# a score of 1 = 2s spawn
 	# a score of 7 ~= 1s spawn
 	# a score of 79 = 0.5s spawn
-	passenger_generator.wait_time = initial_spawn_speed*log(3)/log(score + 2)
+	passenger_generator.wait_time = initial_spawn_speed*log(3.5)/log(score + 2)
 
 func set_max_passengers(value: int) -> void:
 	if not max_passenger_label: return
