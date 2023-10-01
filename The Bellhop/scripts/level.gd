@@ -5,6 +5,14 @@ extends Node2D
 var game_over_scene: Node
 var max_passenger_label: Node
 var passenger_label: Node
+var score: int = 0:
+	set(value):
+		if score_label:
+			score_label.text = str(value)
+
+		score = value
+
+@export var score_label: Label
 
 @export var demo: bool = false
 
@@ -27,6 +35,8 @@ func _ready() -> void:
 
 	set_max_passengers($Elevator.max_capacity)
 
+	score = 0
+
 func place_passenger(pas: Passenger) -> void:
 
 	var floors = $Floors.get_children()
@@ -39,6 +49,8 @@ func place_passenger(pas: Passenger) -> void:
 	pas.position = size/2 + Vector2(randf_range(-size.x/2, size.x/2), randf_range(-size.y/2, size.y/2)) 
 
 	#pas.global_position = floor_position + floor_size/2 + Vector2(randf_range(-floor_size.x/2, floor_size.x/2), randf_range(-floor_size.y/2, floor_size.y/2))
+
+	score += 1
 
 func set_max_passengers(value: int) -> void:
 	if not max_passenger_label: return
@@ -53,4 +65,8 @@ func show_pause_screen() -> void:
 
 func game_over() -> void:
 	get_tree().root.add_child(game_over_scene)
+	if game_over_scene.get("score") != null:
+		print("set score?")
+		game_over_scene.score = str(score)
+
 	queue_free()
