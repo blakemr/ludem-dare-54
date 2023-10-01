@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjuxmyxaimt3s"]
+
+[ext_resource type="FontFile" uid="uid://chvboiic3bkln" path="res://assets/fonts/LibreBaskerville-Regular.ttf" id="1_kr27n"]
+[ext_resource type="FontVariation" uid="uid://mum1kdfyt5gc" path="res://assets/fonts/JosefinSans.tres" id="2_6pql5"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 1000
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kr27n")
+theme_override_font_sizes/font_size = 70
+text = "The Bellhop"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_6pql5")
+theme_override_font_sizes/font_size = 50
+text = "Start"
+flat = true
+
+[node name="TutorialButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_6pql5")
+theme_override_font_sizes/font_size = 50
+text = "How To Play"
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 1350.0
+offset_bottom = 775.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

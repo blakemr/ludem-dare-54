@@ -1,0 +1,10 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://mum1kdfyt5gc"]
+
+[ext_resource type="FontFile" uid="uid://bm1sq8clkqajv" path="res://assets/fonts/JosefinSans-VariableFont_wght.ttf" id="1_uarpa"]
+
+[resource]
+base_font = ExtResource("1_uarpa")
+variation_opentype = {
+2003265652: 300
+}
+variation_embolden = 0.5
