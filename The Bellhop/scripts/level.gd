@@ -4,8 +4,9 @@ extends Node2D
 # Test script
 func _ready() -> void:
 	randomize()
-	$PassengerGenerator.new_passenger.connect(place_passenger)
-	$PassengerGenerator.start()
+	if has_node("PassengerGenerator"):
+		$PassengerGenerator.new_passenger.connect(place_passenger)
+		$PassengerGenerator.start()
 
 func place_passenger(pas: Passenger) -> void:
 	var floors = $Floors.get_children()

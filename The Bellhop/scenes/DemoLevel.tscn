@@ -1,31 +1,31 @@
-[gd_scene load_steps=20 format=3 uid="uid://1tfy3664hdca"]
+[gd_scene load_steps=20 format=3 uid="uid://bho8igw1qgk1a"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_m78fd"]
-[ext_resource type="Script" path="res://classes/Elevator.gd" id="2_db4c8"]
-[ext_resource type="Script" path="res://classes/PassengerGenerator.gd" id="3_8gn07"]
-[ext_resource type="Texture2D" uid="uid://btmlnipb6aq6v" path="res://assets/elevator-green.svg" id="3_yplxr"]
-[ext_resource type="Texture2D" uid="uid://ye27b5vl1apf" path="res://assets/elevator-red.svg" id="4_m2cee"]
-[ext_resource type="PackedScene" uid="uid://bgnm3mh4jpy7" path="res://scenes/Floor.tscn" id="5_02g3n"]
-[ext_resource type="Texture2D" uid="uid://uq2wyq2blcfl" path="res://assets/elevator_cable.svg" id="5_mam17"]
-[ext_resource type="Texture2D" uid="uid://ce636yrftmi8h" path="res://assets/circle.svg" id="6_sp3hh"]
-[ext_resource type="Texture2D" uid="uid://bylrudolu3ei5" path="res://assets/teardrop.svg" id="7_osow5"]
-[ext_resource type="Texture2D" uid="uid://d0mst5g7vghir" path="res://assets/moon.svg" id="8_215ew"]
-[ext_resource type="Texture2D" uid="uid://ot2frvafv77h" path="res://assets/triangle.svg" id="9_qsym6"]
-[ext_resource type="Texture2D" uid="uid://cp28tmt6iiyy4" path="res://assets/square.svg" id="10_wap2w"]
-[ext_resource type="Texture2D" uid="uid://ccfeaoasjobbu" path="res://assets/pentagon.svg" id="11_xmvsm"]
-[ext_resource type="Texture2D" uid="uid://bmgja1u80u2ns" path="res://assets/hexagon.svg" id="12_5i5yq"]
-[ext_resource type="Texture2D" uid="uid://bdhw1gpn78nqp" path="res://assets/7-splat.svg" id="13_wsxue"]
-[ext_resource type="Texture2D" uid="uid://cab0kyh8mluq0" path="res://assets/9-cloud.svg" id="14_ndoah"]
-[ext_resource type="Texture2D" uid="uid://bu0io2elmd3as" path="res://assets/10-star.svg" id="15_uk4qa"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_7x2g5"]
+[ext_resource type="Script" path="res://classes/Elevator.gd" id="2_xr8aa"]
+[ext_resource type="Texture2D" uid="uid://btmlnipb6aq6v" path="res://assets/elevator-green.svg" id="3_i51yh"]
+[ext_resource type="Texture2D" uid="uid://ye27b5vl1apf" path="res://assets/elevator-red.svg" id="4_vxmqe"]
+[ext_resource type="Texture2D" uid="uid://uq2wyq2blcfl" path="res://assets/elevator_cable.svg" id="5_60mby"]
+[ext_resource type="Texture2D" uid="uid://ce636yrftmi8h" path="res://assets/circle.svg" id="6_o46en"]
+[ext_resource type="Texture2D" uid="uid://bylrudolu3ei5" path="res://assets/teardrop.svg" id="7_77yus"]
+[ext_resource type="Texture2D" uid="uid://d0mst5g7vghir" path="res://assets/moon.svg" id="8_mh8k3"]
+[ext_resource type="Texture2D" uid="uid://ot2frvafv77h" path="res://assets/triangle.svg" id="9_aw14y"]
+[ext_resource type="Texture2D" uid="uid://cp28tmt6iiyy4" path="res://assets/square.svg" id="10_tmpur"]
+[ext_resource type="Texture2D" uid="uid://ccfeaoasjobbu" path="res://assets/pentagon.svg" id="11_1hkfi"]
+[ext_resource type="Texture2D" uid="uid://bmgja1u80u2ns" path="res://assets/hexagon.svg" id="12_yoi27"]
+[ext_resource type="Texture2D" uid="uid://bdhw1gpn78nqp" path="res://assets/7-splat.svg" id="13_atvr0"]
+[ext_resource type="Texture2D" uid="uid://cab0kyh8mluq0" path="res://assets/9-cloud.svg" id="14_p8k6u"]
+[ext_resource type="Texture2D" uid="uid://bu0io2elmd3as" path="res://assets/10-star.svg" id="15_o46h5"]
+[ext_resource type="PackedScene" uid="uid://bgnm3mh4jpy7" path="res://scenes/Floor.tscn" id="16_dgd5s"]
+[ext_resource type="Script" path="res://scenes/AutoCallTimer.gd" id="16_k2j7g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cywk5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_yplxr")
+"texture": ExtResource("3_i51yh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_m2cee")
+"texture": ExtResource("4_vxmqe")
 }],
 "loop": true,
 "name": &"default",
@@ -35,15 +35,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mk33"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_m78fd")
+script = ExtResource("1_7x2g5")
 
 [node name="Elevator" type="Node2D" parent="."]
 z_index = 5
 position = Vector2(425, 62)
-script = ExtResource("2_db4c8")
+script = ExtResource("2_xr8aa")
 
 [node name="ElevatorSprite" type="AnimatedSprite2D" parent="Elevator"]
-z_index = 1
+z_index = 5
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_cywk5")
 
@@ -52,36 +52,27 @@ sprite_frames = SubResource("SpriteFrames_cywk5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/Area2D"]
 shape = SubResource("CircleShape2D_7mk33")
 
-[node name="Camera2D" type="Camera2D" parent="Elevator"]
-limit_top = 0
-limit_bottom = 750
-position_smoothing_enabled = true
-
 [node name="Sprite2D" type="Sprite2D" parent="Elevator"]
-position = Vector2(-25, -2433.5)
-scale = Vector2(0.5, 37.5547)
-texture = ExtResource("5_mam17")
+position = Vector2(-25, -3808.5)
+scale = Vector2(0.5, 59.0391)
+texture = ExtResource("5_60mby")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Elevator"]
-position = Vector2(25, -2433.5)
-scale = Vector2(0.5, 37.5547)
-texture = ExtResource("5_mam17")
-
-[node name="PassengerGenerator" type="Timer" parent="."]
-script = ExtResource("3_8gn07")
-floor_textures = Array[Texture]([ExtResource("6_sp3hh"), ExtResource("7_osow5"), ExtResource("8_215ew"), ExtResource("9_qsym6"), ExtResource("10_wap2w"), ExtResource("11_xmvsm"), ExtResource("12_5i5yq"), ExtResource("13_wsxue"), ExtResource("14_ndoah"), ExtResource("15_uk4qa")])
+position = Vector2(25, -3808.5)
+scale = Vector2(0.5, 59.0391)
+texture = ExtResource("5_60mby")
 
 [node name="Floors" type="Node2D" parent="."]
 
-[node name="Floor1" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor1" parent="Floors" instance=ExtResource("16_dgd5s")]
 
 [node name="Sprite2D" type="Sprite2D" parent="Floors/Floor1"]
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("6_sp3hh")
+texture = ExtResource("6_o46en")
 
-[node name="Floor2" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor2" parent="Floors" instance=ExtResource("16_dgd5s")]
 position = Vector2(0, 150)
 call_position = Vector2(425, 212)
 floor_number = 1
@@ -90,9 +81,9 @@ floor_number = 1
 modulate = Color(1, 0, 0, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("7_osow5")
+texture = ExtResource("7_77yus")
 
-[node name="Floor3" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor3" parent="Floors" instance=ExtResource("16_dgd5s")]
 position = Vector2(0, 300)
 call_position = Vector2(425, 362)
 floor_number = 2
@@ -101,9 +92,9 @@ floor_number = 2
 modulate = Color(0, 0, 1, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("8_215ew")
+texture = ExtResource("8_mh8k3")
 
-[node name="Floor4" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor4" parent="Floors" instance=ExtResource("16_dgd5s")]
 position = Vector2(0, 450)
 call_position = Vector2(425, 512)
 floor_number = 3
@@ -112,9 +103,9 @@ floor_number = 3
 modulate = Color(0, 1, 0, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("9_qsym6")
+texture = ExtResource("9_aw14y")
 
-[node name="Floor5" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor5" parent="Floors" instance=ExtResource("16_dgd5s")]
 position = Vector2(0, 600)
 call_position = Vector2(425, 662)
 floor_number = 4
@@ -123,9 +114,9 @@ floor_number = 4
 modulate = Color(0.996078, 0.996078, 0, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("10_wap2w")
+texture = ExtResource("10_tmpur")
 
-[node name="Floor6" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor6" parent="Floors" instance=ExtResource("16_dgd5s")]
 position = Vector2(0, 750)
 call_position = Vector2(425, 812)
 floor_number = 5
@@ -134,9 +125,9 @@ floor_number = 5
 modulate = Color(0.623529, 0.12549, 0.937255, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("11_xmvsm")
+texture = ExtResource("11_1hkfi")
 
-[node name="Floor7" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor7" parent="Floors" instance=ExtResource("16_dgd5s")]
 position = Vector2(0, 900)
 call_position = Vector2(425, 962)
 floor_number = 6
@@ -145,9 +136,9 @@ floor_number = 6
 modulate = Color(0.996078, 0.643137, 0, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("12_5i5yq")
+texture = ExtResource("12_yoi27")
 
-[node name="Floor8" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor8" parent="Floors" instance=ExtResource("16_dgd5s")]
 position = Vector2(0, 1050)
 call_position = Vector2(425, 1112)
 floor_number = 7
@@ -156,9 +147,9 @@ floor_number = 7
 modulate = Color(0.25098, 0.87451, 0.811765, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("13_wsxue")
+texture = ExtResource("13_atvr0")
 
-[node name="Floor9" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor9" parent="Floors" instance=ExtResource("16_dgd5s")]
 position = Vector2(0, 1200)
 call_position = Vector2(425, 1262)
 floor_number = 8
@@ -167,9 +158,9 @@ floor_number = 8
 modulate = Color(0.996078, 0, 0.996078, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("14_ndoah")
+texture = ExtResource("14_p8k6u")
 
-[node name="Floor10" parent="Floors" instance=ExtResource("5_02g3n")]
+[node name="Floor10" parent="Floors" instance=ExtResource("16_dgd5s")]
 position = Vector2(0, 1350)
 call_position = Vector2(425, 1412)
 floor_number = 9
@@ -178,16 +169,19 @@ floor_number = 9
 modulate = Color(0, 0, 0, 0.392157)
 position = Vector2(325, 50)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("15_uk4qa")
+texture = ExtResource("15_o46h5")
 
 [node name="Background" type="ColorRect" parent="."]
 z_index = -100
-offset_left = -1200.0
-offset_top = -800.0
-offset_right = 1800.0
-offset_bottom = 2400.0
-mouse_filter = 2
+offset_right = 475.0
+offset_bottom = 1500.0
 color = Color(0, 0, 0, 1)
+
+[node name="AutoCallTimer" type="Timer" parent="." node_paths=PackedStringArray("auto_calls")]
+wait_time = 0.5
+autostart = true
+script = ExtResource("16_k2j7g")
+auto_calls = [NodePath("../Floors/Floor1"), NodePath("../Floors/Floor2"), NodePath("../Floors/Floor3"), NodePath("../Floors/Floor4"), NodePath("../Floors/Floor5")]
 
 [connection signal="call_elevator" from="Floors/Floor1" to="Elevator" method="call_recieved"]
 [connection signal="call_elevator" from="Floors/Floor2" to="Elevator" method="call_recieved"]
@@ -199,3 +193,4 @@ color = Color(0, 0, 0, 1)
 [connection signal="call_elevator" from="Floors/Floor8" to="Elevator" method="call_recieved"]
 [connection signal="call_elevator" from="Floors/Floor9" to="Elevator" method="call_recieved"]
 [connection signal="call_elevator" from="Floors/Floor10" to="Elevator" method="call_recieved"]
+[connection signal="timeout" from="AutoCallTimer" to="AutoCallTimer" method="on_timeout"]
